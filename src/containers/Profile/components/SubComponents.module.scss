@@ -1,0 +1,54 @@
+/**
+ * Sub-Components Shared Styles
+ */
+
+@import '../../../styles/variables';
+
+.skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+  margin-top: $spacing-sm;
+}
+
+.skillChip {
+  @include transition;
+  background-color: rgba($primary, 0.05);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba($primary, 0.2);
+  }
+}
+
+.experienceContainer {
+  padding: $spacing-sm 0;
+}
+
+.yearsDisplay {
+  text-align: center;
+}
+
+.contractsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+  margin-top: $spacing-sm;
+}
+
+.contractChip {
+  @include transition;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba($primary, 0.3);
+  }
+}
+
+/* Responsive design */
+@include responsive('md') {
+  .skillsContainer,
+  .contractsContainer {
+    justify-content: center;
+  }
+}

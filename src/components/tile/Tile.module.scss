@@ -1,0 +1,106 @@
+/**
+ * Tile Component Styles
+ * Modern 2025 design with smooth animations
+ */
+
+@import '../../styles/variables';
+
+.tileCard {
+  border-radius: $border-radius-xl;
+  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+  padding: $spacing-xl;
+  display: flex;
+  align-items: stretch;
+  box-shadow: $shadow-md;
+  @include transition;
+  border: 1px solid $border-light;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-xl;
+  }
+}
+
+.tileContent {
+  width: 100%;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-xl;
+  margin-bottom: $spacing-lg;
+}
+
+.profileImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+}
+
+.profileDetails {
+  flex: 1;
+
+  h3 {
+    margin: 0;
+    font-size: $font-size-2xl;
+    color: $text-primary;
+    font-weight: $font-weight-bold;
+  }
+
+  p {
+    margin: $spacing-sm 0 0 0;
+    color: $text-secondary;
+    font-size: 0.95rem;
+  }
+}
+
+.additionalContent {
+  margin-top: $spacing-lg;
+  padding-top: $spacing-lg;
+  border-top: 1px solid $border-light;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: $spacing-sm 0;
+      color: $text-primary;
+      position: relative;
+      padding-left: 20px;
+
+      &:before {
+        content: '▹';
+        position: absolute;
+        left: 0;
+        color: $primary;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+}
+
+/* Responsive design */
+@include responsive('md') {
+  .profileInfo {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profileImage {
+    width: 80px;
+    height: 80px;
+  }
+
+  .profileDetails {
+    h3 {
+      font-size: 1.25rem;
+    }
+  }
+}

@@ -1,0 +1,205 @@
+/**
+ * SCSS Variables and Mixins
+ * Global design tokens and reusable patterns
+ */
+
+// ============================================
+// Colors
+// ============================================
+$primary: #1a73e8;
+$primary-light: #5b9ef5;
+$primary-dark: #1557b0;
+
+$secondary: #00bcd4;
+$secondary-light: #4dd0e1;
+$secondary-dark: #0097a7;
+
+$success: #4caf50;
+$success-light: #81c784;
+$success-dark: #388e3c;
+
+$danger: #f44336;
+$danger-light: #ef5350;
+$danger-dark: #d32f2f;
+
+$warning: #ff9800;
+$warning-light: #ffb74d;
+$warning-dark: #f57c00;
+
+$dark: #1a1a2e;
+$dark-secondary: #16213e;
+$light: #f5f7fa;
+$light-secondary: #e9ecef;
+
+$text-primary: #1a1a2e;
+$text-secondary: #6b7280;
+$text-disabled: #9ca3af;
+
+$border-color: #e5e7eb;
+$border-light: rgba(0, 0, 0, 0.05);
+
+// ============================================
+// Gradients
+// ============================================
+$gradient-primary: linear-gradient(135deg, $primary 0%, $secondary 100%);
+$gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+$gradient-success: linear-gradient(135deg, $success 0%, #45b393 100%);
+$gradient-warm: linear-gradient(135deg, #f5deb3 0%, #ddc7bc 100%);
+$gradient-dark: linear-gradient(135deg, $dark 0%, $dark-secondary 100%);
+
+// ============================================
+// Spacing
+// ============================================
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 16px;
+$spacing-xl: 20px;
+$spacing-2xl: 24px;
+$spacing-3xl: 32px;
+$spacing-4xl: 40px;
+$spacing-5xl: 60px;
+
+// ============================================
+// Typography
+// ============================================
+$font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+$font-family-code: 'Fira Code', 'Monaco', 'Courier New', monospace;
+
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 2rem;
+$font-size-4xl: 2.75rem;
+$font-size-5xl: 3.5rem;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// ============================================
+// Border Radius
+// ============================================
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+
+// ============================================
+// Transitions
+// ============================================
+$transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-fast: all 0.15s ease-out;
+$transition-slow: all 0.6s ease-in;
+
+// ============================================
+// Shadows
+// ============================================
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.15);
+$shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.15);
+
+// ============================================
+// Breakpoints
+// ============================================
+$breakpoint-xs: 480px;
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// ============================================
+// Mixins
+// ============================================
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin line-clamp($lines: 1) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-clamp: $lines;
+}
+
+@mixin transition($property: all, $duration: 0.3s, $easing: cubic-bezier(0.4, 0, 0.2, 1)) {
+  transition: $property $duration $easing;
+}
+
+@mixin hover-lift {
+  transition: $transition-base;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+@mixin gradient-text($gradient: $gradient-primary) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@mixin focus-ring($color: $primary) {
+  outline: 2px solid $color;
+  outline-offset: 2px;
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == 'xs' {
+    @media (max-width: $breakpoint-xs) {
+      @content;
+    }
+  } @else if $breakpoint == 'sm' {
+    @media (max-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (max-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (max-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (max-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+}
+
+@mixin respond-to($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}

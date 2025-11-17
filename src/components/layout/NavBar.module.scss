@@ -1,0 +1,15 @@
+/**
+ * Navigation Bar Styles
+ */
+
+@import '../../styles/variables';
+
+.navBar {
+  background: $gradient-dark !important;
+  box-shadow: $shadow-lg !important;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  background-color: rgba($dark, 0.95) !important;
+}

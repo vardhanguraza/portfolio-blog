@@ -1,0 +1,81 @@
+/**
+ * Blog Card Styles
+ */
+
+@import '../../../styles/variables';
+
+.blogCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  @include transition;
+  border: 1px solid $border-light;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-xl;
+
+    .blogImage {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.blogImage {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  @include transition($property: transform);
+}
+
+.cardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  @include flex-between;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  margin-bottom: $spacing-md;
+  line-height: 1.4;
+  @include line-clamp(2);
+}
+
+.excerpt {
+  color: $text-secondary;
+  margin-bottom: $spacing-md;
+  line-height: 1.6;
+  @include line-clamp(3);
+  flex: 1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  margin-top: auto;
+}
+
+/* Responsive design */
+@include responsive('md') {
+  .blogCard {
+    border-radius: $border-radius-lg;
+  }
+
+  .blogImage {
+    height: 180px;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+}

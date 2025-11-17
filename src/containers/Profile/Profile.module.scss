@@ -1,0 +1,72 @@
+/**
+ * Profile Container Styles
+ * Modern 2025 design with gradient backgrounds and animations
+ */
+
+@import '../../styles/variables';
+
+.profileContainer {
+  min-height: calc(100vh - 64px);
+  background: linear-gradient(135deg, $light 0%, $light-secondary 100%);
+  padding: $spacing-4xl $spacing-xl;
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heroSection {
+  padding: $spacing-xl 0;
+}
+
+.profileTileWrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+.detailsColumn {
+  @include flex-column;
+}
+
+.detailsStack {
+  @include flex-column;
+  gap: $spacing-xl;
+}
+
+/* Responsive adjustments */
+@include responsive('md') {
+  .profileContainer {
+    padding: $spacing-xl $spacing-md;
+    min-height: auto;
+  }
+
+  .heroSection {
+    padding: $spacing-lg 0;
+  }
+
+  .detailsStack {
+    gap: $spacing-lg;
+  }
+}
+
+@include responsive('xs') {
+  .profileContainer {
+    padding: $spacing-lg $spacing-sm;
+  }
+
+  .heroSection {
+    padding: $spacing-sm 0;
+  }
+
+  .detailsStack {
+    gap: $spacing-md;
+  }
+}
